@@ -1,7 +1,6 @@
 language: php
 
 php:
-  - 5.3
   - 5.4
   - 5.5
   - hhvm
@@ -14,6 +13,8 @@ install:
 
 before_script:
   - mkdir -p build/logs
+  - mysql -e 'create database `harp-orm/random-key`;'
+  - mysql harp-orm/random-key < tests/mysql.sql
 
 script:
   - phpunit --coverage-clover build/logs/clover.xml

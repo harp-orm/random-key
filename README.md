@@ -11,6 +11,35 @@ Generate a random key for a model property
 Usage
 -----
 
+```
+use Harp\Harp\AbstractModel
+use Harp\RandomKey\Model\RandomKeyTrat
+
+class User extends AbstractModel
+{
+    use RandomKeyTrat;
+}
+
+//--------
+
+use Harp\Harp\AbstractRepo
+use Harp\RandomKey\Repo\RandomKeyTrat
+
+class User extends AbstractRepo
+{
+    use RandomKeyTrat;
+
+    public function initialize()
+    {
+        // ...
+        $this->initializeRandmoKey();
+    }
+}
+
+```
+
+Now you'll have a "uniqueKey" property on your model, that will be pre-populated for each new object.
+
 License
 -------
 

@@ -14,6 +14,7 @@ trait RandomKeyTrait
     /**
      * @param int                   $event
      * @param \Closure|object|array $callback
+     * @return string
      */
     abstract public function addEventBefore($event, $callback);
 
@@ -22,6 +23,9 @@ trait RandomKeyTrait
         return strtoupper(base_convert(rand(1, 10000000000), 10, 36));
     }
 
+    /**
+     * @return string
+     */
     public function newRandomKeyUnique()
     {
         do {
@@ -34,7 +38,7 @@ trait RandomKeyTrait
 
     public function initializeRandomKey()
     {
-        $this
+        return $this
             ->addEventAfter(Event::CONSTRUCT, function ($model) {
                 $model->uniqueKey = $model->uniqueKey ?: $this->newRandomKeyUnique();
             });

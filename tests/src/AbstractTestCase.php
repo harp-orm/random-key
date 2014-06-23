@@ -17,10 +17,10 @@ abstract class AbstractTestCase extends PHPUnit_Framework_TestCase {
     {
         parent::setUp();
 
-        DB::setConfig('default', array(
+        DB::setConfig([
             'dsn' => 'mysql:dbname=harp-orm/random-key;host=127.0.0.1',
             'username' => 'root',
-        ));
+        ]);
 
         DB::get()->beginTransaction();
 

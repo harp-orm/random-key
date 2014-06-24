@@ -15,16 +15,11 @@ class Test extends AbstractRepo
 {
     use RandomKeyTrait;
 
-    /**
-     * @return Test
-     */
-    public static function newInstance()
-    {
-        return new Test('Harp\RandomKey\Test\Model\Test');
-    }
-
     public function initialize()
     {
-        $this->initializeRandomKey();
+        $this
+            ->setModelClass('Harp\RandomKey\Test\Model\Test')
+            ->setTable('Test')
+            ->initializeRandomKey();
     }
 }

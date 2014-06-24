@@ -3,7 +3,6 @@
 namespace Harp\RandomKey\Test\Model;
 
 use Harp\Harp\AbstractModel;
-use Harp\RandomKey\Test\Repo;
 use Harp\RandomKey\Model\RandomKeyTrait;
 
 /**
@@ -13,15 +12,9 @@ use Harp\RandomKey\Model\RandomKeyTrait;
  */
 class Test extends AbstractModel
 {
-    use RandomKeyTrait;
+    const REPO = 'Harp\RandomKey\Test\Repo\Test';
 
-    /**
-     * @return Repo\Test
-     */
-    public function getRepo()
-    {
-        return Repo\Test::get();
-    }
+    use RandomKeyTrait;
 
     public $id;
 }

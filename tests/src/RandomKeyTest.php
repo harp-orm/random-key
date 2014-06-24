@@ -20,7 +20,7 @@ class RandomKeyTest extends AbstractTestCase
 
         $this->assertNotNull($test->uniqueKey);
 
-        Repo\Test::get()->save($test);
+        Model\Test::save($test);
 
         $test2 = new Model\Test();
 
@@ -44,11 +44,7 @@ class RandomKeyTest extends AbstractTestCase
      */
     public function testNewRandomKeyUnique()
     {
-        $repo = $this->getMock(
-            __NAMESPACE__.'\Repo\Test',
-            ['newRandomKey'],
-            [__NAMESPACE__.'\Model\Test']
-        );
+        $repo = $this->getMock(__NAMESPACE__.'\Repo\Test', ['newRandomKey']);
 
         $repo
             ->expects($this->exactly(5))

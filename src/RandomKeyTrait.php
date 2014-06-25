@@ -1,6 +1,6 @@
 <?php
 
-namespace Harp\RandomKey\Model;
+namespace Harp\RandomKey;
 
 /**
  * @author    Ivan Kerin <ikerin@gmail.com>

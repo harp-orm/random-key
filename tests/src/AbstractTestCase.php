@@ -4,7 +4,6 @@ namespace Harp\RandomKey\Test;
 
 use Harp\Query\DB;
 use PHPUnit_Framework_TestCase;
-use Harp\RandomKey\Test\Repo;
 
 /**
  * @author    Ivan Kerin <ikerin@gmail.com>
@@ -24,7 +23,7 @@ abstract class AbstractTestCase extends PHPUnit_Framework_TestCase {
 
         DB::get()->beginTransaction();
 
-        Repo\Test::get()->clear();
+        TestRepo::get()->clear();
     }
 
     public function tearDown()

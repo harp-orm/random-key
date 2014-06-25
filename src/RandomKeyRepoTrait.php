@@ -1,6 +1,6 @@
 <?php
 
-namespace Harp\RandomKey\Repo;
+namespace Harp\RandomKey;
 
 use Harp\Core\Repo\Event;
 
@@ -9,7 +9,7 @@ use Harp\Core\Repo\Event;
  * @copyright 2014, Clippings Ltd.
  * @license   http://spdx.org/licenses/BSD-3-Clause
  */
-trait RandomKeyTrait
+trait RandomKeyRepoTrait
 {
     /**
      * @param int                   $event

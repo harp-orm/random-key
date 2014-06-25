@@ -3,7 +3,7 @@
 namespace Harp\RandomKey\Test;
 
 /**
- * @coversDefaultClass Harp\RandomKey\Repo\RandomKeyTrait
+ * @coversDefaultClass Harp\RandomKey\RandomKeyRepoTrait
  *
  * @author    Ivan Kerin <ikerin@gmail.com>
  * @copyright 2014, Clippings Ltd.
@@ -16,13 +16,13 @@ class RandomKeyTest extends AbstractTestCase
      */
     public function testConstruct()
     {
-        $test = new Model\Test();
+        $test = new Test();
 
         $this->assertNotNull($test->uniqueKey);
 
-        Model\Test::save($test);
+        Test::save($test);
 
-        $test2 = new Model\Test();
+        $test2 = new Test();
 
         $this->assertNotNull($test2->uniqueKey);
 
@@ -34,7 +34,7 @@ class RandomKeyTest extends AbstractTestCase
      */
     public function testNewRandomKey()
     {
-        $key = Repo\Test::get()->newRandomKey();
+        $key = TestRepo::get()->newRandomKey();
 
         $this->assertLessThan(100, strlen($key));
     }
@@ -44,7 +44,7 @@ class RandomKeyTest extends AbstractTestCase
      */
     public function testNewRandomKeyUnique()
     {
-        $repo = $this->getMock(__NAMESPACE__.'\Repo\Test', ['newRandomKey']);
+        $repo = $this->getMock(__NAMESPACE__.'\TestRepo', ['newRandomKey']);
 
         $repo
             ->expects($this->exactly(5))

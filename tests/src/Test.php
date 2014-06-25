@@ -1,9 +1,9 @@
 <?php
 
-namespace Harp\RandomKey\Test\Model;
+namespace Harp\RandomKey\Test;
 
 use Harp\Harp\AbstractModel;
-use Harp\RandomKey\Model\RandomKeyTrait;
+use Harp\RandomKey\RandomKeyTrait;
 
 /**
  * @author    Ivan Kerin <ikerin@gmail.com>
@@ -12,7 +12,7 @@ use Harp\RandomKey\Model\RandomKeyTrait;
  */
 class Test extends AbstractModel
 {
-    const REPO = 'Harp\RandomKey\Test\Repo\Test';
+    const REPO = 'Harp\RandomKey\Test\TestRepo';
 
     use RandomKeyTrait;
 

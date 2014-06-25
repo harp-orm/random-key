@@ -1,24 +1,23 @@
 <?php
 
-namespace Harp\RandomKey\Test\Repo;
+namespace Harp\RandomKey\Test;
 
 use Harp\Harp\AbstractRepo;
-use Harp\RandomKey\Test\Model;
-use Harp\RandomKey\Repo\RandomKeyTrait;
+use Harp\RandomKey\RandomKeyRepoTrait;
 
 /**
  * @author    Ivan Kerin <ikerin@gmail.com>
  * @copyright 2014, Clippings Ltd.
  * @license   http://spdx.org/licenses/BSD-3-Clause
  */
-class Test extends AbstractRepo
+class TestRepo extends AbstractRepo
 {
-    use RandomKeyTrait;
+    use RandomKeyRepoTrait;
 
     public function initialize()
     {
         $this
-            ->setModelClass('Harp\RandomKey\Test\Model\Test')
+            ->setModelClass('Harp\RandomKey\Test\Test')
             ->setTable('Test')
             ->initializeRandomKey();
     }

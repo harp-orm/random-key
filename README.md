@@ -6,28 +6,28 @@ Random Key
 [![Code Coverage](https://scrutinizer-ci.com/g/harp-orm/random-key/badges/coverage.png)](https://scrutinizer-ci.com/g/harp-orm/random-key/)
 [![Latest Stable Version](https://poser.pugx.org/harp-orm/random-key/v/stable.png)](https://packagist.org/packages/harp-orm/random-key)
 
-Generate a random key for a model property
+Generate a random unique key for a model property
 
 Usage
 -----
 
 ```
+// Model Class
 use Harp\Harp\AbstractModel
-use Harp\RandomKey\Model\RandomKeyTrat
+use Harp\RandomKey\RandomKeyTrat
 
 class User extends AbstractModel
 {
     use RandomKeyTrat;
 }
 
-//--------
-
+// Repo Class
 use Harp\Harp\AbstractRepo
-use Harp\RandomKey\Repo\RandomKeyTrat
+use Harp\RandomKey\RandomKeyRepoTrat
 
-class User extends AbstractRepo
+class UserRepo extends AbstractRepo
 {
-    use RandomKeyTrat;
+    use RandomKeyRepoTrat;
 
     public function initialize()
     {
@@ -35,10 +35,20 @@ class User extends AbstractRepo
         $this->initializeRandmoKey();
     }
 }
-
 ```
 
-Now you'll have a "uniqueKey" property on your model, that will be pre-populated for each new object.
+__Database Table:__
+
+```
+┌─────────────────────────┐
+│ Table: User             │
+├─────────────┬───────────┤
+│ id          │ ingeter   │
+│ name        │ string    │
+│ uniqueKey*  │ string    │
+└─────────────┴───────────┘
+* Required fields
+```
 
 License
 -------

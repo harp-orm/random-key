@@ -3,7 +3,7 @@
 namespace Harp\RandomKey\Test;
 
 /**
- * @coversDefaultClass Harp\RandomKey\RandomKeyRepoTrait
+ * @coversDefaultClass Harp\RandomKey\RandomKeyTrait
  *
  * @author    Ivan Kerin <ikerin@gmail.com>
  * @copyright 2014, Clippings Ltd.
@@ -12,7 +12,7 @@ namespace Harp\RandomKey\Test;
 class RandomKeyTest extends AbstractTestCase
 {
     /**
-     * @covers ::initializeRandomKey
+     * @covers ::initialize
      */
     public function testConstruct()
     {
@@ -34,7 +34,7 @@ class RandomKeyTest extends AbstractTestCase
      */
     public function testNewRandomKey()
     {
-        $key = TestRepo::get()->newRandomKey();
+        $key = Test::newRandomKey();
 
         $this->assertLessThan(100, strlen($key));
     }
@@ -44,15 +44,10 @@ class RandomKeyTest extends AbstractTestCase
      */
     public function testNewRandomKeyUnique()
     {
-        $repo = $this->getMock(__NAMESPACE__.'\TestRepo', ['newRandomKey']);
+        Test2::$newRandomKey = ['new-key', 'existing-key', 'existing-key2', 'existing-key3', 'agian-key'];
 
-        $repo
-            ->expects($this->exactly(5))
-            ->method('newRandomKey')
-            ->will($this->onConsecutiveCalls('new-key', 'existing-key', 'existing-key2', 'existing-key3', 'agian-key'));
-
-        $this->assertEquals('new-key', $repo->newRandomKeyUnique());
-        $this->assertEquals('agian-key', $repo->newRandomKeyUnique());
+        $this->assertEquals('new-key', Test2::newRandomKeyUnique());
+        $this->assertEquals('agian-key', Test2::newRandomKeyUnique());
     }
 
 }

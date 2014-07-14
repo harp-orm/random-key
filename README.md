@@ -14,25 +14,16 @@ Usage
 ```
 // Model Class
 use Harp\Harp\AbstractModel
-use Harp\RandomKey\RandomKeyTrat
+use Harp\RandomKey\RandomKeyTrait
 
 class User extends AbstractModel
 {
     use RandomKeyTrat;
-}
 
-// Repo Class
-use Harp\Harp\AbstractRepo
-use Harp\RandomKey\RandomKeyRepoTrat
-
-class UserRepo extends AbstractRepo
-{
-    use RandomKeyRepoTrat;
-
-    public function initialize()
+    public static function initialize($config)
     {
         // ...
-        $this->initializeRandmoKey();
+        RandomKeyTrait::initialize($config);
     }
 }
 ```
